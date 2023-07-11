@@ -12,5 +12,5 @@ run()
   .then(() => log('\n✔ tests complete\n'))
   .catch(error => {
     console.error(error)
-    exit 1
+    process.exit(1)
   })
