@@ -31,9 +31,8 @@ class Testr {
   success(test, indent) {
     log(`${indent}  %c✔ `, 'color: green', test?.description)
   }
-  error(test, indent) {
+  error(error, test, indent) {
     console.error(`${indent}  %c✘ `, 'color: red', test?.description)
-    console.error(error)
   }
   describe(description, callback, status = 'normal') {
     const suite = {
@@ -78,40 +77,57 @@ class Testr {
     this.it(description, testFn, 'omit')
   }
   async run() {
-    if (this.onlySuites.length > 0)
-      await this.runSuites(this.onlySuites)
-    else
-      await this.runSuites(this.suites)
+    try {
+      if (this.onlySuites.length > 0)
+        await this.runSuites(this.onlySuites)
+      else
+        await this.runSuites(this.suites)
+    } catch (error) {
+      throw error
+    }
   }
   async runSuites(suites) {
-    for (let ii = 0; ii < suites.length; ii++) {
-      await this.runSuite(suites[ii])
-      if (ii !== suites.length - 1) log('')
+    try {
+      for (let ii = 0; ii < suites.length; ii++) {
+        await this.runSuite(suites[ii])
+        if (ii !== suites.length - 1) log('')
+      }
+    } catch (error) {
+      throw error
     }
   }
   async runSuite(suite, indent = '') {
-    if (suite.status === 'omit') return
-    log(`${indent}${suite.description}`)
-    if (suite.tests.length > 0)
-      await this.runTests(suite.tests, indent + '  ', suite)
-    if (suite.suites.length > 0)
-      for (const subSuite of suite.suites)
-        await this.runSuite(subSuite, indent + '  ')
+    try {
+      if (suite.status === 'omit') return
+      log(`${indent}${suite.description}`)
+      if (suite.tests.length > 0)
+        await this.runTests(suite.tests, indent + '  ', suite)
+      if (suite.suites.length > 0)
+        for (const subSuite of suite.suites)
+          await this.runSuite(subSuite, indent + '  ')
+    } catch (error) {
+      throw error
+    }
   }
   async runTests(tests, indent = '', suite) {
-    if (suite.beforeAll) await suite.beforeAll()
-    for (const test of tests) {
-      if (test.status === 'omit') continue
-      if (suite.beforeEach) await suite.beforeEach()
-      try {
-        await test.testFn()
-        this.success(test, indent)
-      } catch (error) {
-        this.error(error, test, indent)
+    try {
+      if (suite.beforeAll) await suite.beforeAll()
+      for (const test of tests) {
+        if (test.status === 'omit') continue
+        if (suite.beforeEach) await suite.beforeEach()
+        try {
+          await test.testFn()
+          this.success(test, indent)
+        } catch (error) {
+          this.error(error, test, indent)
+          throw error
+        }
+        if (suite.afterEach) await suite.afterEach()
       }
-      if (suite.afterEach) await suite.afterEach()
+      if (suite.afterAll) await suite.afterAll()
+    } catch (error) {
+      throw error
     }
-    if (suite.afterAll) await suite.afterAll()
   }
   static explode(...args) {
     const functions = [

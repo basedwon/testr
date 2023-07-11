@@ -20,7 +20,6 @@ class TestrNode extends Testr {
   }
   error(error, test, indent) {
     console.error(`${indent}\x1b[${colors.red}m%s\x1b[0m`, '✘ ', test.description)
-    console.error(error)
   }
   findTestFiles(dir, fileList = []) {
     if (!fs.existsSync(dir))
