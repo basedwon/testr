@@ -1,7 +1,7 @@
 
 # Testr
 
-Testr is a flexible and lightweight testing library for JavaScript. It's designed to work seamlessly in both browser and Node.js environments. It supports a variety of features such as nesting, asynchronous execution, and exclusion/inclusion of test cases to streamline your testing workflow.
+Testr is a flexible, lightweight and based testing library for JavaScript. It's designed to work seamlessly in both browser and Node.js environments. It supports a variety of features such as nesting, asynchronous execution, and exclusion/inclusion of test cases to streamline your testing workflow.
 
 ## Installation
 
@@ -18,7 +18,7 @@ npm install @basd/testr
 Here is a simple example of using Testr:
 
 ```js
-const { Testr } = require('@basd/testr')
+const Testr = require('@basd/testr')
 
 const testr = new Testr()
 
@@ -78,7 +78,7 @@ testr.describe('A test suite', () => {
 For Node.js environments, `TestrNode` provides additional functionality:
 
 ```js
-const { TestrNode } = require('@basd/testr')
+const TestrNode = require('@basd/testr')
 
 TestrNode.explode('path/to/tests', ['path/to/tests/to/ignore'])
 ```
@@ -93,7 +93,7 @@ If you have installed Testr globally or in your project, you can use the `testr`
 # Run all test files in a directory
 testr path/to/tests
 
-# Run all test files, except those in certain directories
+# Run all test files, except those in certain directories (coming soon..)
 testr path/to/tests --ignore path/to/tests/to/ignore
 ```
 

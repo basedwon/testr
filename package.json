@@ -26,7 +26,7 @@
     "testr": "./testr-cli.js"
   },
   "scripts": {
-    "test": "testr ."
+    "test": "testr"
   },
   "dependencies": {
     "chai": "^4.3.7",
