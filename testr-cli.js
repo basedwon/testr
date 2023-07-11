@@ -8,5 +8,9 @@ if (!testPath || !testPath.startsWith('/'))
   testPath = testPath ? path.resolve(process.cwd(), testPath) : process.cwd()
 
 const run = TestrNode.explode(testPath)
-run().then(() => log('\n✔ tests complete\n'))
-// .catch(error => log(error))
+run()
+  .then(() => log('\n✔ tests complete\n'))
+  .catch(error => {
+    console.error(error)
+    exit 1
+  })
