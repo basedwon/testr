@@ -9,7 +9,7 @@ if (!testPath || !testPath.startsWith('/'))
 
 const run = TestrNode.explode(testPath)
 run()
-  .then(() => log('\n✔ tests complete\n'))
+  .then(() => log(`\x1b[32m%s\x1b[0m`, '\n✔ ', `tests complete\n`))
   .catch(error => {
     console.error(error)
     process.exit(1)
