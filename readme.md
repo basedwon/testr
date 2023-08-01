@@ -1,5 +1,16 @@
-
 # Testr
+
+> getr done, testr first
+
+[![npm](https://img.shields.io/npm/v/testr?style=flat&logo=npm)](https://www.npmjs.com/package/testr)
+[![pipeline](https://gitlab.com/basedwon/testr/badges/master/pipeline.svg)](https://gitlab.com/basedwon/testr/-/pipelines)
+[![license](https://img.shields.io/npm/l/testr)](https://gitlab.com/basedwon/testr/-/blob/master/LICENSE)
+[![downloads](https://img.shields.io/npm/dw/testr)](https://www.npmjs.com/package/testr) 
+
+[![Gitlab](https://img.shields.io/badge/Gitlab%20-%20?logo=gitlab&color=%23383a40)](https://gitlab.com/basedwon/testr)
+[![Github](https://img.shields.io/badge/Github%20-%20?logo=github&color=%23383a40)](https://github.com/basedwon/testr)
+[![Twitter](https://img.shields.io/badge/@basdwon%20-%20?logo=twitter&color=%23383a40)](https://twitter.com/basdwon)
+[![Discord](https://img.shields.io/badge/Basedwon%20-%20?logo=discord&color=%23383a40)](https://discordapp.com/users/basedwon)
 
 Testr is a flexible, lightweight and based testing library for JavaScript. It's designed to work seamlessly in both browser and Node.js environments. It supports a variety of features such as nesting, asynchronous execution, and exclusion/inclusion of test cases to streamline your testing workflow.
 
@@ -102,3 +113,21 @@ This will automatically find and run any files ending with `.test.js`.
 ## Contributing
 
 Contributions are welcome! Please open an issue if you encounter any problems, or a pull request if you make a change.
+
+## Donations
+
+If you find this project useful and want to help support further development, please send us some coin. We greatly appreciate any and all contributions. Thank you!
+
+**Bitcoin (BTC):**
+```
+1JUb1yNFH6wjGekRUW6Dfgyg4J4h6wKKdF
+```
+
+**Monero (XMR):**
+```
+46uV2fMZT3EWkBrGUgszJCcbqFqEvqrB4bZBJwsbx7yA8e2WBakXzJSUK8aqT4GoqERzbg4oKT2SiPeCgjzVH6VpSQ5y7KQ
+```
+
+## License
+
+Testr is [MIT licensed](https://gitlab.com/basedwon/testr/-/blob/master/LICENSE).
