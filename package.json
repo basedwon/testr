@@ -12,25 +12,30 @@
     "url": "https://github.com/basedwon/testr/issues"
   },
   "homepage": "https://github.com/basedwon/testr#readme",
-  "main": "testr.js",
+  "main": "./lib/testr.js",
   "exports": {
     ".": {
-      "browser": "./testr.js",
-      "node": "./testr-node.js"
+      "browser": "./lib/testr.js",
+      "node": "./lib/testr-node.js"
     }
   },
   "browser": {
-    ".": "./testr.js"
+    ".": "./lib/testr.js"
   },
   "bin": {
-    "testr": "./testr-cli.js"
+    "lib/testr": "./lib/testr-cli.js"
   },
   "scripts": {
-    "test": "testr"
+    "build": "nodemon test/self-test.js",
+    "dev": "nodemon -x \"npm test\"",
+    "test": "mocha ./test/*.test.js"
   },
   "dependencies": {
-    "chai": "^4.3.7",
-    "lodash": "^4.17.21"
+    "chai": "^4.3.7"
+  },
+  "devDependencies": {
+    "mocha": "^10.2.0",
+    "sinon": "^15.2.0"
   },
   "keywords": [
     "test",

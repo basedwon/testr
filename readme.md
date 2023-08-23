@@ -1,25 +1,25 @@
 # Testr
 
-> getr done, testr first
+> gitr done, testr first
 
-[![npm](https://img.shields.io/npm/v/testr?style=flat&logo=npm)](https://www.npmjs.com/package/testr)
+[![npm](https://img.shields.io/npm/v/@basd/testr?style=flat&logo=npm)](https://www.npmjs.com/package/@basd/testr)
 [![pipeline](https://gitlab.com/basedwon/testr/badges/master/pipeline.svg)](https://gitlab.com/basedwon/testr/-/pipelines)
-[![license](https://img.shields.io/npm/l/testr)](https://gitlab.com/basedwon/testr/-/blob/master/LICENSE)
-[![downloads](https://img.shields.io/npm/dw/testr)](https://www.npmjs.com/package/testr) 
+[![license](https://img.shields.io/npm/l/@basd/testr)](https://gitlab.com/basedwon/testr/-/blob/master/LICENSE)
+[![downloads](https://img.shields.io/npm/dw/@basd/testr)](https://www.npmjs.com/package/@basd/testr) 
 
 [![Gitlab](https://img.shields.io/badge/Gitlab%20-%20?logo=gitlab&color=%23383a40)](https://gitlab.com/basedwon/testr)
 [![Github](https://img.shields.io/badge/Github%20-%20?logo=github&color=%23383a40)](https://github.com/basedwon/testr)
 [![Twitter](https://img.shields.io/badge/@basdwon%20-%20?logo=twitter&color=%23383a40)](https://twitter.com/basdwon)
 [![Discord](https://img.shields.io/badge/Basedwon%20-%20?logo=discord&color=%23383a40)](https://discordapp.com/users/basedwon)
 
-Testr is a flexible, lightweight and based testing library for JavaScript. It's designed to work seamlessly in both browser and Node.js environments. It supports a variety of features such as nesting, asynchronous execution, and exclusion/inclusion of test cases to streamline your testing workflow.
+Testr is a flexible, lightweight and based testing library for JS. It's designed to work seamlessly in both browser and Node.js environments. It supports a variety of features such as nesting, asynchronous execution, and exclusion/inclusion of test cases to streamline your testing workflow.
 
 ## Installation
 
 To install Testr, use npm:
 
 ```sh
-npm install @basd/testr
+npm i -D @basd/testr
 ```
 
 ## Usage
@@ -38,47 +38,57 @@ testr.describe('A test suite', () => {
     if (1 + 1 !== 2) {
       throw new Error('Math is broken!')
     }
+    expect(2 + 2).to.equal(4)
   })
 })
 
 testr.run()
+```
+Or you can instantiate and destructure the functions you need:
+
+```js
+const { describe, it, before, after, expect, assert, run, testr } = new Testr()
+// or as a function
+const { describe, it, before, after, expect, assert, run, testr } = Testr()
+// which means you can do this:
+const { describe, it, before, after, expect, assert, run, testr } = require('@basd/testr')()
 ```
 
 In this example, we create a test suite with `describe()`, add a test case with `it()`, and run our tests with `run()`.
 
 ### Skipping and Only Running Certain Tests
 
-You can also mark test cases or suites to be skipped with `describeOmit()` and `itOmit()`, or to be the only ones run with `describeOnly()` and `itOnly()`.
+You can also mark test cases or suites to be skipped with `describe.omit()` and `it.omit()`, or to be the only ones run with `describe.only()` and `it.only()`.
 
 ```js
-testr.describeOmit('A skipped test suite', () => {
-  testr.it('A skipped test case', () => {})
+describe.omit('A skipped test suite', () => {
+  it('A skipped test case', () => {})
 })
 
-testr.describeOnly('A test suite to run alone', () => {
-  testr.itOnly('A test case to run alone', () => {})
+describe.only('A test suite to run alone', () => {
+  it.only('A test case to run alone', () => {})
 })
 ```
 
 ### Before and After Hooks
 
-You can use `beforeEach()`, `afterEach()`, `beforeAll()`, and `afterAll()` to set up and tear down for tests:
+You can use `before.each()`, `after.each()`, `before.all()`, and `after.all()` to set up and tear down for tests:
 
 ```js
-testr.describe('A test suite', () => {
+describe('A test suite', () => {
   let counter = 0
   
-  testr.beforeEach(() => {
+  before.each(() => {
     counter = 1
   })
   
-  testr.it('A test case', () => {
+  it('A test case', () => {
     if (counter !== 1) {
       throw new Error('Counter not initialized!')
     }
   })
   
-  testr.afterEach(() => {
+  after.each(() => {
     counter = 0
   })
 })
