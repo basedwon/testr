@@ -140,4 +140,4 @@ If you find this project useful and want to help support further development, pl
 
 ## License
 
-Testr is [MIT licensed](https://gitlab.com/basedwon/testr/-/blob/master/LICENSE).
+@basd/testr is [MIT licensed](https://gitlab.com/basedwon/testr/-/blob/master/LICENSE).

@@ -28,14 +28,17 @@
   "scripts": {
     "build": "nodemon test/self-test.js",
     "dev": "nodemon -x \"npm test\"",
+    "update": "npm run update:prod && npm run update:dev",
+    "update:prod": "npm i -S chai@latest sinon@latest",
+    "update:dev": "npm i -D mocha@latest",
     "test": "mocha ./test/*.test.js"
   },
   "dependencies": {
-    "chai": "^4.3.7"
+    "chai": "^4.3.10",
+    "sinon": "^17.0.1"
   },
   "devDependencies": {
-    "mocha": "^10.2.0",
-    "sinon": "^15.2.0"
+    "mocha": "^10.2.0"
   },
   "keywords": [
     "test",
