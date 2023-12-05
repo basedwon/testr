@@ -74,7 +74,7 @@ describe('Testr Class', () => {
   describe('Suite Handling', () => {
     it('should create a new suite with _createSuite', () => {
       const testr = new Testr()
-      const suite = testr._createSuite('Test Suite', 'normal')
+      const suite = testr._createSuite('Test Suite', null, 'normal')
 
       expect(suite).to.deep.equal({
         description: 'Test Suite',
@@ -82,9 +82,9 @@ describe('Testr Class', () => {
         tests: [],
         suites: [],
         beforeAll: null,
-        beforeEach: null,
+        beforeEach: [],
         afterAll: null,
-        afterEach: null,
+        afterEach: [],
       })
     })
 
@@ -166,8 +166,8 @@ describe('Testr Class', () => {
   describe('Running Tests', () => {
     it('should run only suites if onlySuites has suites', async () => {
       const testr = new Testr()
-      const normalSuite = testr._createSuite('Normal Suite', 'normal')
-      const onlySuite = testr._createSuite('Only Suite', 'only')
+      const normalSuite = testr._createSuite('Normal Suite', null, 'normal')
+      const onlySuite = testr._createSuite('Only Suite', null, 'only')
 
       testr.suites.push(normalSuite)
       testr.onlySuites.push(onlySuite)
@@ -181,7 +181,7 @@ describe('Testr Class', () => {
 
     it('should run normal suites if onlySuites is empty', async () => {
       const testr = new Testr()
-      const normalSuite = testr._createSuite('Normal Suite', 'normal')
+      const normalSuite = testr._createSuite('Normal Suite', null, 'normal')
       testr.suites.push(normalSuite)
 
       const runSuitesSpy = sinon.spy(testr, '_runSuites')
